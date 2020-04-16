@@ -8,12 +8,12 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "forms")
+@Table(name = "groups")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class FormGroup {
+public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,17 +21,8 @@ public class FormGroup {
 
     private String name;
 
-    @ManyToOne
-    private Group group;
-
-    private String explanation;
-    private int formsN;
-
-    public FormGroup(String name, Group group, String explanation, int formsN) {
+    public Group(String name) {
         this.name = name;
-        this.group = group;
-        this.explanation = explanation;
-        this.formsN = formsN;
     }
 
 }

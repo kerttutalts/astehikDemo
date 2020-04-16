@@ -1,20 +1,22 @@
 package com.example.dev;
 
 import com.example.dev.model.FormGroup;
+import com.example.dev.model.Group;
 import com.example.dev.repository.FormGroupRepository;
+import com.example.dev.repository.GroupRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.Set;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
 	private final FormGroupRepository formGroupRepository;
+	private final GroupRepository groupRepository;
 
-	public Application(FormGroupRepository formGroupRepository) {
+	public Application(FormGroupRepository formGroupRepository, GroupRepository groupRepository) {
 		this.formGroupRepository = formGroupRepository;
+		this.groupRepository = groupRepository;
 	}
 
 	public static void main(String[] args) {
@@ -23,8 +25,9 @@ public class Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) {
-		Set<FormGroup> forms = Set.of(new FormGroup("Õiguste andmine", "Kesksüsteemi juhtimine", "Kiirabiga seotud vormingud", 3));
-		formGroupRepository.saveAll(forms);
+		Group group = new Group("Kesksüsteemi juhtimine");
+		groupRepository.save(group);
+		formGroupRepository.save(new FormGroup("Form 1", group, "Laallala", 3));
 	}
 
 }
