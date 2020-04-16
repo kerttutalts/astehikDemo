@@ -1,4 +1,4 @@
-package com.example.dev;
+package com.example.dev.config;
 
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
