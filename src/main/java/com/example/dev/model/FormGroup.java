@@ -25,6 +25,7 @@ public class FormGroup {
     private Group group;
 
     private String explanation;
+
     private int formsN;
 
     public FormGroup(String name, Group group, String explanation, int formsN) {
